@@ -1,0 +1,26 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#heading {
+  margin: 1em;
+  color: rgba(245, 245, 245, 0.737);
+  text-align: center;
+}
+
+#scroll {
+  padding-top: 350vh;
+}
+
+h1 {
+  color: whitesmoke;
+}
