@@ -1,8 +1,7 @@
-import * as THREE from "three"
+import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import gsap from'gsap'
-import { _round } from "gsap/gsap-core";
-import { Tween } from "gsap/gsap-core";
+import { gsap, Linear } from'gsap'
+import { _round } from "gsap/gsap-core"
 
 
 //Scene
@@ -72,7 +71,7 @@ window.addEventListener('resize', () => {
   renderer.setSize(sizes.width, sizes.height)
 })
 
-//Light position vars
+//Light rotation function
 let radius = 10; // radius of the circle
 let angle = 0; // initial angle
 let speed = 0.05; // speed of rotation
@@ -88,7 +87,6 @@ function animate() {
 
 const loop = () => {
   animate()
-  console.log(pointLight.position)
 
   controls.update()
   renderer.render(scene, camera)
@@ -97,6 +95,7 @@ const loop = () => {
 loop()
 
 //Scroll Events 
+var sheight = document.getElementById("scroll").offsetHeight
 
 window.addEventListener('scroll', function() {
   var sP = window.scrollY;
@@ -111,17 +110,30 @@ window.addEventListener('scroll', function() {
       ge = ((percentageScroll)*((g2-g1)/100) + g1)/255
       be = ((percentageScroll)*((b2-b1)/100) + b1)/255
   }
-  colorGrapth(219, 0, 235, 245, 245, 245)
+  colorGrapth(235, 0, 30, 239, 210, 18)
 
-  // document.getElementById('text').innerHTML = percentageScroll + '%';
-
-  console.log('ratio three:', percentageScroll)
+  document.getElementById('text').innerHTML = percentageScroll + '%';
 
   pointLight.color = {r:re,g:ge,b:be}
 
-   if(percentageScroll > 50){
-    gsap.to(mesh.position, { duration: 1, x: 0, y: 0, z: -1*((percentageScroll-50)/4) })
+//Move obj
+
+  if(percentageScroll > 50){
+    gsap.to(mesh.position, { duration: 1, x: 0, y: 0, z: -1*((percentageScroll-50)/3) })
   } else {
     gsap.to(mesh.position, { duration: 1, x: 0, y: 0, z:0 })
+    gsap.killTweensOf(document.getElementById('scroll'))
+    gsap.to(document.getElementById("scroll"), {opacity: 0, bottom: 0.05*window.innerHeight,  duration: 0.2})
   } 
+
+  const scrollE = document.getElementById('scroll')
+  const scrollS = getComputedStyle(scrollE)
+
+  const scrollH = scrollE.clientHeight - parseFloat(scrollS.paddingBottom)
+
+  if(percentageScroll == 100){
+    console.log((scrollH))
+    gsap.killTweensOf(document.getElementById("scroll"))
+    gsap.to(document.getElementById("scroll"), {bottom: 0.5*(window.innerHeight - scrollH), duration: 1.5, ease: Linear.easeNone,})
+    gsap.to(document.getElementById("scroll"), {opacity: 1, duration: 3})}
 });

@@ -18,8 +18,16 @@ html, body {
   text-align: center;
 }
 
-#scroll {
+#scrolldad {
   padding-top: 350vh;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#scroll {
+  opacity: 0;
+  color: whitesmoke;
+  position: relative;
 }
 
 h1 {
