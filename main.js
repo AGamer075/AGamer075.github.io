@@ -1,7 +1,7 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { gsap, Linear } from'gsap'
-import { _round } from "gsap/gsap-core"
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { gsap, Linear } from'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js'
+// import { _round } from "gsap/gsap-core"
 
 
 //Scene
@@ -55,7 +55,7 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
 //Controls
-const controls = new OrbitControls(camera, canvasa)
+const controls = new THREE.OrbitControls(camera, canvasa)
 controls.enableZoom = false
 controls.enableDamping = true
 controls.enablePan = false
