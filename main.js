@@ -1,6 +1,5 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.js"
-import { gsap, Linear } from'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/CustomEase.min.js'
-
+import { gsap } from "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
 
 //Scene
 const scene = new THREE.Scene()
@@ -132,6 +131,6 @@ window.addEventListener('scroll', function() {
   if(percentageScroll == 100){
     console.log((scrollH))
     gsap.killTweensOf(document.getElementById("scroll"))
-    gsap.to(document.getElementById("scroll"), {bottom: 0.5*(window.innerHeight - scrollH), duration: 1.5, ease: Linear.easeNone,})
+    gsap.to(document.getElementById("scroll"), {bottom: 0.5*(window.innerHeight - scrollH), duration: 1.5,})
     gsap.to(document.getElementById("scroll"), {opacity: 1, duration: 3})}
 });
