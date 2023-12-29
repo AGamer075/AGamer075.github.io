@@ -1,6 +1,4 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.js"
-import { gsap } from "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
-
 //Scene
 const scene = new THREE.Scene()
 
