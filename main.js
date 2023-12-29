@@ -1,5 +1,4 @@
-import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.js"
-// g
+import * as THREE from "https://www.unpkg.com/three-js@79.0.0/three.js"
 //Scene
 const scene = new THREE.Scene()
 
