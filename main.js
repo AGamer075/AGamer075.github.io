@@ -1,7 +1,5 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { gsap, Linear } from'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js'
-// import { _round } from "gsap/gsap-core"
 
 
 //Scene
