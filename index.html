@@ -5,8 +5,15 @@
     <title>Project A</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://www.unpkg.com/three-js@79.0.0/addons/OrbitControls.js"></script>
-  </head>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three-js@79.0.0/three.js",
+          "three/addons/": "https://unpkg.com/three-js@79.0.0/addons/OrbitControls.js"
+        }
+      }
+    </script>
+    </head>
   <body>
     <canvas id="bg"></canvas>
     <div id="heading"><h1 id="text">0%</h1></div>

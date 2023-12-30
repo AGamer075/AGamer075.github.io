@@ -1,4 +1,4 @@
-import * as THREE from "https://www.unpkg.com/three-js@79.0.0/three.js"
+var THREE = require('three.js')();
 //Scene
 const scene = new THREE.Scene()
 
