@@ -1,4 +1,3 @@
-var THREE = require('three-js')();
 //Scene
 const scene = new THREE.Scene()
 
