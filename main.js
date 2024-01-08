@@ -1,3 +1,5 @@
+import * as THREE from "https://unpkg.com/three-js@79.0.0/three.js"
+import { OrbitControls  } from "https://unpkg.com/three-js@79.0.0/addons/OrbitControls.js"
 //Scene
 const scene = new THREE.Scene()
 
@@ -49,7 +51,7 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
 //Controls
-const controls = new THREE.OrbitControls(camera, canvasa)
+const controls = new OrbitControls(camera, canvasa)
 controls.enableZoom = false
 controls.enableDamping = true
 controls.enablePan = false
