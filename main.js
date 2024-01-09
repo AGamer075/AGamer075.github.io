@@ -1,4 +1,4 @@
-import * as THREE from './vendor/three.module.js';
+//import * as THREE from './vendor/';
 import { OrbitControls } from './vendor/OrbitControls.js';
 //Scene
 const scene = new THREE.Scene()
