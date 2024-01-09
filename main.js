@@ -1,5 +1,5 @@
-import * as THREE from "https://unpkg.com/three-js@79.0.0/three.js"
-import { OrbitControls  } from "https://unpkg.com/three-js@79.0.0/addons/OrbitControls.js"
+import * as THREE from './vendor/three.module.js';
+import { OrbitControls } from './vendor/OrbitControls.js';
 //Scene
 const scene = new THREE.Scene()
 
