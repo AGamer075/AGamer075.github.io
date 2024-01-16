@@ -1,5 +1,5 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.js";
-import { OrbitControls } from "./vendor/OrbitControls.js";
+import { OrbitControls } from "https://agamer075.github.io/vendor/OrbitControls.js";
 //Scene
 const scene = new THREE.Scene()
 
