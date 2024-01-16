@@ -1,4 +1,5 @@
 import * as THREE from "./vendor/three.module.js";
+import { OrbitControls  } from "./vendor/OrbitControls.js";
 //Scene
 const scene = new THREE.Scene()
 
@@ -83,7 +84,7 @@ function animate() {
 const loop = () => {
   animate()
 
-  controls.update()
+  //controls.update()
   renderer.render(scene, camera)
   window.requestAnimationFrame(loop)
 }
