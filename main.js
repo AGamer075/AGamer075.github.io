@@ -1,5 +1,5 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm";
-//import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js'
+import threeOrbitcontrols from 'https://cdn.jsdelivr.net/npm/three-orbitcontrols@2.110.3/+esm'
 
 //Scene
 const scene = new THREE.Scene()
@@ -52,7 +52,7 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
 //Controls
- const controls = new OrbitControls(camera, canvasa)
+ const controls = new threeOrbitcontrols(camera, canvasa)
 // controls.enableZoom = false
 // controls.enableDamping = true
 // controls.enablePan = false
