@@ -31,7 +31,7 @@ camera.rotateX(90)
 scene.add(camera)
 
 //Light
-const pointLight = new THREE.PointLight(0xDB00EB,100)
+const pointLight = new THREE.PointLight(0xEB0032,100)
 pointLight.position.set(0,-5,0)
 scene.add(pointLight)
 
@@ -52,10 +52,10 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
 //Controls
- const controls = new OrbitControls(camera, canvasa)
-// controls.enableZoom = false
-// controls.enableDamping = true
-// controls.enablePan = false
+  const controls = new OrbitControls(camera, canvasa)
+  controls.enableZoom = false
+  controls.enableDamping = true
+  controls.enablePan = false
 // controls.autoRotate = true 
 // controls.autoRotateSpeed = 10
 
