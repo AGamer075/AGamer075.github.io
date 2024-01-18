@@ -19,12 +19,14 @@ html, body {
 }
 
 #scrolldad {
-  padding-top: 350vh;
+  padding-top: 450vh;
   padding-left: 10%;
   padding-right: 10%;
 }
 
 #scroll {
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   color: whitesmoke;
   position: relative;
