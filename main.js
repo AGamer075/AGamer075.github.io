@@ -109,7 +109,7 @@ window.addEventListener('scroll', function() {
   }
   colorGrapth(235, 0, 30, 239, 210, 18)
 
-  document.getElementById('text').innerHTML = percentageScroll + '%';
+ // document.getElementById('text').innerHTML = percentageScroll + '%';
 
   pointLight.color = {r:re,g:ge,b:be}
 
