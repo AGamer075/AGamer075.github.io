@@ -5,7 +5,7 @@ html, body {
 }
 
 p {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 #bg {
@@ -34,6 +34,7 @@ p {
   opacity: 0;
   color: whitesmoke;
   position: relative;
+  text-align: center;
 }
 
 h1 {
