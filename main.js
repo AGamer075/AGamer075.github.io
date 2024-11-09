@@ -139,10 +139,9 @@ window.addEventListener('scroll', function() {
 var noCounter = 1
 function beginMoving(onCondition) {
    if(onCondition == "Start") {
-     let moveInterval = setInterval(moveElement,1000)
+     moveInterval = setInterval(moveElement,1000)
    } else if(onCondition == "Stop") {}
     clearInterval(moveInterval)
-    return moveInterval
 }
 
 function moveElement() { 
