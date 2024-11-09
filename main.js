@@ -148,9 +148,8 @@ function getRandomPosition(element) {
 function moveElement() { 
     var element = document.getElementById("decButton"); 
     var xy = getRandomPosition(element);
-    element.style.position = "absolute";
     element.style.top = xy[0] + 'px'; 
     element.style.left = xy[1] + 'px'; 
 }
 
-// document.getElementById("decButton").addEventListener("click", moveElement());
+document.getElementById("decButton").addEventListener("click", moveElement());
