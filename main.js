@@ -134,3 +134,21 @@ window.addEventListener('scroll', function() {
     gsap.to(document.getElementById("scroll"), {bottom: 0.5*(window.innerHeight - scrollH), duration: 1.5,})
     gsap.to(document.getElementById("scroll"), {opacity: 1, duration: 3})}
 });
+
+//Move Button
+
+function getRandomPosition(element) { 
+    var x = document.body.offsetHeight - element.clientHeight;
+    var y = document.body.offsetWidth - element.clientWidth;
+    var randomX = Math.floor(Math.random() * x);
+    var randomY = Math.floor(Math.random() * y);
+    return [randomX, randomY]; 
+} 
+
+function moveElement() { 
+    var element = document.getElementById("decButton"); 
+    var xy = getRandomPosition(element);
+    element.style.position = "absolute";
+    element.style.top = xy[0] + 'px'; 
+    element.style.left = xy[1] + 'px'; 
+}
