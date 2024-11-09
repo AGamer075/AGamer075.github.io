@@ -137,24 +137,15 @@ window.addEventListener('scroll', function() {
 
 //Move Button
 var noCounter = 1
-let moveInterval = setInterval(moveElement)
-function beginMoving(onCondition) {
-   if(onCondition == "Start") {
-     moveInterval = setInterval(moveElement,1000)
-   } else if(onCondition == "Stop") {}
-    clearInterval(moveInterval)
-}
-
-beginMoving("Stop")
 
 function moveElement() { 
     var element = document.getElementById("decButton");
     gsap.killTweensOf(element)
     if(element.style.marginLeft <= "0vw") {
-        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter})
+        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: moveElement()})
         console.log("Element moving right")
     } else {
-        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter})
+        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: moveElement()})
         console.log("Element moving left")
     }
 }
@@ -167,11 +158,9 @@ function getRandomInt(min, max) {
 // Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    beginMoving("Start")
-    noCounter += noCounter
+    noCounter += 1
 });
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    beginMoving("Stop")
 });
