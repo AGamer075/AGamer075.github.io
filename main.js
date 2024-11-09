@@ -140,19 +140,20 @@ var noCounter = 1
 
 function moveElement() { 
     var element = document.getElementById("decButton");
+    var stopMovement = false;
     gsap.killTweensOf(element)
-    if(element.style.marginLeft <= "0vw") {
-        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: function(){
-            console.log("it got called")
-            moveElement()
-        }})
-        console.log("Element moving right")
-    } else {
-        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function(){
-            console.log("something else happened")
-            moveElement()
-        }})
-        console.log("Element moving left")
+    if(stopMovement == false) {
+        if(element.style.marginLeft <= "0vw") {
+            gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: function(){
+                console.log("it got called")
+                moveElement()
+            }})
+        } else {
+            gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function(){
+                console.log("something else happened")
+                moveElement()
+            }})
+        }
     }
 }
 
@@ -171,4 +172,5 @@ document.getElementById("decButton").addEventListener("click", function(){
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
     console.log("Button Clicked!")
+    stopMovement = true
 });
