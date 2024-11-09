@@ -137,12 +137,15 @@ window.addEventListener('scroll', function() {
 
 //Move Button
 var noCounter = 1
+let moveInterval = setInterval(moveElement)
 function beginMoving(onCondition) {
    if(onCondition == "Start") {
      moveInterval = setInterval(moveElement,1000)
    } else if(onCondition == "Stop") {}
     clearInterval(moveInterval)
 }
+
+beginMoving("Stop")
 
 function moveElement() { 
     var element = document.getElementById("decButton");
