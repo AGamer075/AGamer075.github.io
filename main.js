@@ -142,10 +142,16 @@ function moveElement() {
     var element = document.getElementById("decButton");
     gsap.killTweensOf(element)
     if(element.style.marginLeft <= "0vw") {
-        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: moveElement()})
+        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: function(){
+            console.log("it got called")
+            moveElement()
+        }})
         console.log("Element moving right")
     } else {
-        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: moveElement()})
+        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function{
+            console.log("something else happened")
+            moveElement()
+        }})
         console.log("Element moving left")
     }
 }
