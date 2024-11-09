@@ -152,3 +152,5 @@ function moveElement() {
     element.style.top = xy[0] + 'px'; 
     element.style.left = xy[1] + 'px'; 
 }
+
+document.getElementById("decButton").addEventListener("click", moveElement());
