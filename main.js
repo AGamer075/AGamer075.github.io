@@ -164,6 +164,7 @@ function getRandomInt(min, max) {
 // Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
+    moveElement()
     noCounter += 1
 });
 // Accept Button Clicked
