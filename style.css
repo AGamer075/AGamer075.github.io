@@ -40,3 +40,13 @@ p {
 h1 {
   color: whitesmoke;
 }
+
+button {
+  font-size: 2em;
+  width: 30vw;
+  align-self: center;
+  color: ghostwhite;
+  background: #222222;
+  border-radius: 1em;
+  height: 1.5em;
+}
