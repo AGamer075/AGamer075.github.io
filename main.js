@@ -137,20 +137,34 @@ window.addEventListener('scroll', function() {
 
 //Move Button
 let moveInterval = setInterval(moveElement,1000)
+var noCounter = 1
+clearInterval(moveInterval)
 
 function moveElement() { 
     var element = document.getElementById("decButton");
     gsap.killTweensOf(element)
     if(element.style.marginLeft <= "0vw") {
-        gsap.to(element, {marginLeft:"60vw", duration: 1})
+        gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter})
         console.log("Element moving right")
     } else {
-        gsap.to(element, {marginLeft:"-60vw", duration: 1})
+        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter})
         console.log("Element moving left")
     }
 }
 
+function getRandomInt(min, max) { 
+    min = Math.ceil(min) 
+    max = Math.floor(max) 
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+// Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
-    console.log("Button Clicked!");
+    console.log("Button Clicked!")
+    moveInterval = setInterval(moveElement,getRandomInt(700,1200))
+    noCounter += noCounter
 });
-
+// Accept Button Clicked
+document.getElementById("accButton").addEventListener("click", function(){
+    console.log("Button Clicked!")
+    clearInterval(moveInterval)
+});
