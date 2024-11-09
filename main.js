@@ -153,4 +153,4 @@ function moveElement() {
     element.style.left = xy[1] + 'px'; 
 }
 
-document.getElementById("decButton").addEventListener("click", moveElement());
+// document.getElementById("decButton").addEventListener("click", moveElement());
