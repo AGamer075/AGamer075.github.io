@@ -138,20 +138,18 @@ window.addEventListener('scroll', function() {
 //Move Button
 
 function getRandomPosition(element) { 
-    var x = document.body.offsetHeight - element.clientHeight;
-    var y = document.body.offsetWidth - element.clientWidth;
-    var randomX = Math.floor(Math.random() * x);
-    var randomY = Math.floor(Math.random() * y);
-    return [randomX, randomY]; 
+   
 } 
 
 function moveElement() { 
-    var element = document.getElementById("decButton"); 
-    var xy = getRandomPosition(element);
-    element.style.top = xy[0] + 'px'; 
-    element.style.left = xy[1] + 'px'; 
+    var element = document.getElementById("decButton");
+    element.style.position = "absolute"
+    element.style.top = "9vh"
+    element.style.left = "0vw"
+    gasp.to(element, {left: "55vw", duration: 2})
 }
 
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!");
+    moveElement();
 });
