@@ -140,7 +140,7 @@ var noCounter = 1
 function beginMoving(onCondition) {
    if(onCondition == "Start") {
      let moveInterval = setInterval(moveElement,1000)
-   } else if(onCondtion == "Stop") {}
+   } else if(onCondition == "Stop") {}
     clearInterval(moveInterval)
     return moveInterval
 }
