@@ -145,12 +145,10 @@ function moveElement() {
     if(stopMovement == false) {
         if(element.style.marginLeft <= "0vw") {
             gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: function(){
-                console.log("it got called")
                 moveElement()
             }})
         } else {
             gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function(){
-                console.log("something else happened")
                 moveElement()
             }})
         }
@@ -167,10 +165,14 @@ document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
     moveElement()
     noCounter += 1
-    document.getElementById("mainParagraph").textContent = "Place Holder" + noCounter
+    document.getElementById("mainParagraph").textContent = "Place Holder x" + noCounter
 });
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    stopMovement = true
+    if(noCounter == 1) {
+        document.getElementById("mainParagraph").textContent = "At Press it once"
+    } else {
+        document.getElementById("decButton").style.visibility = "hidden"
+    }
 });
