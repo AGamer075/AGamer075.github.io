@@ -166,6 +166,7 @@ document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
     moveElement()
     noCounter += 1
+    document.getElementById("mainParagraph").textContent = "Place Holder" + noCounter
 });
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
