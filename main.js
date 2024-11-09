@@ -145,8 +145,9 @@ function moveElement() {
     var element = document.getElementById("decButton");
     element.style.position = "absolute"
     element.style.top = "9vh"
-    element.style.left = "0vw"
-    gsap.to(element, {left: "55vw", duration: 2})
+    gsap.kilTweenOf(element)
+    element.style.marginLeft = "-60vw"
+    gsap.to(element, {marginLeft:"60vw", duration: 1})
 }
 
 document.getElementById("decButton").addEventListener("click", function(){
