@@ -136,11 +136,12 @@ window.addEventListener('scroll', function() {
 });
 
 //Move Button
- 
+let moveInterval = setInterval(moveElement,1000)
+
 function moveElement() { 
     var element = document.getElementById("decButton");
     gsap.killTweensOf(element)
-    if(element.style.marginLeft == "-60vw") {
+    if(element.style.marginLeft <= "0vw") {
         gsap.to(element, {marginLeft:"60vw", duration: 1})
         console.log("Element moving right")
     } else {
@@ -151,5 +152,5 @@ function moveElement() {
 
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!");
-    moveElement();
 });
+
