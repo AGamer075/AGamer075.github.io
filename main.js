@@ -145,7 +145,7 @@ function moveElement() {
     var element = document.getElementById("decButton");
     element.style.position = "absolute"
     element.style.top = "9vh"
-    gsap.kilTweenOf(element)
+    gsap.killTweensOf(element)
     element.style.marginLeft = "-60vw"
     gsap.to(element, {marginLeft:"60vw", duration: 1})
 }
