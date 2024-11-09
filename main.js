@@ -146,7 +146,7 @@ function moveElement() {
     element.style.position = "absolute"
     element.style.top = "9vh"
     element.style.left = "0vw"
-    gasp.to(element, {left: "55vw", duration: 2})
+    gsap.to(element, {left: "55vw", duration: 2})
 }
 
 document.getElementById("decButton").addEventListener("click", function(){
