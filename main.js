@@ -160,7 +160,7 @@ function getRandomInt(min, max) {
 // Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    moveInterval = setInterval(moveElement,getRandomInt(700,1200))
+    let moveInterval = setInterval(moveElement,1000)
     noCounter += noCounter
 });
 // Accept Button Clicked
