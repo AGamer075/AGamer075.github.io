@@ -136,9 +136,14 @@ window.addEventListener('scroll', function() {
 });
 
 //Move Button
-let moveInterval = setInterval(moveElement,1000)
 var noCounter = 1
-clearInterval(moveInterval)
+function beginMoving(onCondition) {
+   if(onCondition == "Start") {
+     let moveInterval = setInterval(moveElement,1000)
+   } else if(onCondtion == "Stop") {}
+    clearInterval(moveInterval)
+    return moveInterval
+}
 
 function moveElement() { 
     var element = document.getElementById("decButton");
@@ -160,11 +165,11 @@ function getRandomInt(min, max) {
 // Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    let moveInterval = setInterval(moveElement,1000)
+    beginMoving("Start")
     noCounter += noCounter
 });
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
     console.log("Button Clicked!")
-    clearInterval(moveInterval)
+    beginMoving("Stop")
 });
