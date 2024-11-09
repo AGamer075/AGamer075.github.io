@@ -148,7 +148,7 @@ function moveElement() {
         }})
         console.log("Element moving right")
     } else {
-        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function{
+        gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function(){
             console.log("something else happened")
             moveElement()
         }})
