@@ -136,18 +136,15 @@ window.addEventListener('scroll', function() {
 });
 
 //Move Button
-
-function getRandomPosition(element) { 
-   
-} 
-
+ 
 function moveElement() { 
     var element = document.getElementById("decButton");
-    element.style.position = "absolute"
-    element.style.top = "9vh"
     gsap.killTweensOf(element)
-    element.style.marginLeft = "-60vw"
-    gsap.to(element, {marginLeft:"60vw", duration: 1})
+    if(element.style.marginLeft = "-60vw") {
+        gsap.to(element, {marginLeft:"60vw", duration: 1})
+    } else {
+        gsap.to(element, {marginLeft:"-60vw", duration: 1})
+    }
 }
 
 document.getElementById("decButton").addEventListener("click", function(){
