@@ -172,5 +172,7 @@ document.getElementById("accButton").addEventListener("click", function(){
         document.getElementById("mainParagraph").textContent = "At least reject the apology once"
     } else {
         document.getElementById("decButton").style.visibility = "hidden"
+        document.getElementById("accButton").style.visibility = "hidden"
+        document.getElementById("mainParagraph").textContent = "Thannkkssss!" 
     }
 });
