@@ -162,16 +162,14 @@ function getRandomInt(min, max) {
 }
 // Decline Button Clicked
 document.getElementById("decButton").addEventListener("click", function(){
-    console.log("Button Clicked!")
     moveElement()
     noCounter += 1
-    document.getElementById("mainParagraph").textContent = "Place Holder x" + noCounter
+    document.getElementById("mainParagraph").textContent = "Sorry x" + noCounter
 });
 // Accept Button Clicked
 document.getElementById("accButton").addEventListener("click", function(){
-    console.log("Button Clicked!")
     if(noCounter == 1) {
-        document.getElementById("mainParagraph").textContent = "At Press it once"
+        document.getElementById("mainParagraph").textContent = "At least reject the apology once"
     } else {
         document.getElementById("decButton").style.visibility = "hidden"
     }
