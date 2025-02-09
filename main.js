@@ -107,7 +107,7 @@ window.addEventListener('scroll', function() {
       ge = ((percentageScroll)*((g2-g1)/100) + g1)/255
       be = ((percentageScroll)*((b2-b1)/100) + b1)/255
   }
-  colorGrapth(235, 0, 30, 239, 210, 18)
+  colorGrapth(50, 180, 230, 10, 10, 180)
 
  // document.getElementById('text').innerHTML = percentageScroll + '%';
 
