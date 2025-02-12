@@ -54,14 +54,14 @@ img {
 }
 
 #Question {
-    margin-top: 5%;
+    margin-top: 10%;
     height:5em;
 }
 
 h1 {
     font-family: cursive;
     text-align: center;
-    -webkit-text-stroke: 0.2px white;
+    -webkit-text-stroke: 0.1px white;
 }
 
 p {
