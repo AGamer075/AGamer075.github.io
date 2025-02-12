@@ -1,178 +1,146 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm";
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js/+esm'
+var noCount = 0;
 
-//Scene
-const scene = new THREE.Scene()
+document.addEventListener('DOMContentLoaded', (event) => {
 
-//Color 
-var r = 255;
-var g = 0;
-var b = 0;
+    //Element Constants
+    const yesDiv = document.getElementById("Yes")
+    const noDiv = document.getElementById("No")
+    const QueDiv = document.getElementById("Question")
+    const mainHeadTxt = document.getElementById("mainHead")
+    const indDiv = document.getElementById("independant")
 
-//Sphere
-const geometry = new THREE.SphereGeometry(3, 64, 64)
-var material = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
-})
+    var isButtonDisabled = false;
+    var isStop = false;
 
-const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
+    //Gsap Functions
+    function moveRight(){
+        gsap.to(noDiv, {right:"0%", duration: 0.7, onComplete: function(){moveUp()}})
+    }
 
-//Sizes
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight
-}
+    function moveUp() { 
+        gsap.to(noDiv, {marginTop:"10%", duration: 0.7, onComplete: function(){moveLeft()}})
+    }
+    function moveLeft() {
+        gsap.to(noDiv, {right:"55%", duration: 0.7, onComplete: function(){moveDown()}})
+    }
 
-//Camera
-const camera = new THREE.PerspectiveCamera(45, sizes.width/sizes.height, 0.1,1000)
-camera.position.setY(30)
-camera.rotateX(90)
-scene.add(camera)
+    function moveDown() {
+        gsap.to(noDiv, {marginTop:"80vh", duration: 0.7, onComplete: function(){
+            if(isStop == false) {
+                moveRight()
+            }
+            else {
+                noDiv.style.marginTop = "1rem"
+                noDiv.style.right = "auto"
+                noDiv.style.position = "relative"
+            }
+        }})
+    }
 
-//Light
-const pointLight = new THREE.PointLight(0xEB0032,100)
-pointLight.position.set(0,-5,0)
-scene.add(pointLight)
+    //Typing Animation 
 
-//Helpers
-// const lightHelper = new THREE.PointLightHelper(pointLight)
-// const gridHelper = new THREE.GridHelper(200, 50)
-// scene.add(lightHelper, gridHelper)
-
-//Renderer
-const renderer = new THREE.WebGLRenderer({ 
-  canvas: document.querySelector('#bg')
-})
-
-const canvasa = document.querySelector('#bg')
-
-renderer.setPixelRatio( 2 )
-renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
-
-//Controls
-  const controls = new OrbitControls(camera, canvasa)
-  controls.enableZoom = false
-  controls.enableDamping = true
-  controls.enablePan = false
-// controls.autoRotate = true 
-// controls.autoRotateSpeed = 10
-
-//Resize
-window.addEventListener('resize', () => {
-  sizes.width = window.innerWidth
-  sizes.height = window.innerHeight
-  camera.aspect = sizes.width/sizes.height
-  camera.updateProjectionMatrix()
-  renderer.setSize(sizes.width, sizes.height)
-})
-
-//Light rotation function
-let radius = 10; // radius of the circle
-let angle = 0; // initial angle
-let speed = 0.05; // speed of rotation
-
-function animate() {
-  pointLight.position.setX(radius * Math.cos(angle))
-  pointLight.position.setZ(radius * Math.sin(angle))
-  angle += speed
-  // move the object to (x, y)
-}
-
-//loop
-
-const loop = () => {
-  animate()
-
-  //controls.update()
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(loop)
-}
-loop()
-
-//Scroll Events 
-var sheight = document.getElementById("scroll").offsetHeight
-
-window.addEventListener('scroll', function() {
-  var sP = window.scrollY;
-  var percentageScroll = Math.round(100*(sP/(document.body.scrollHeight-window.innerHeight)))
-
-  var re = 1
-  var ge = 1
-  var be = 1
-
-  function colorGrapth(r1,g1,b1,r2,g2,b2) {
-      re = ((percentageScroll)*((r2-r1)/100) + r1)/255
-      ge = ((percentageScroll)*((g2-g1)/100) + g1)/255
-      be = ((percentageScroll)*((b2-b1)/100) + b1)/255
-  }
-  colorGrapth(50, 180, 230, 10, 10, 180)
-
- // document.getElementById('text').innerHTML = percentageScroll + '%';
-
-  pointLight.color = {r:re,g:ge,b:be}
-
-//Move obj
-
-  if(percentageScroll > 50){
-    gsap.to(mesh.position, { duration: 1, x: 0, y: 0, z: -1*((percentageScroll-50)/3) })
-  } else {
-    gsap.to(mesh.position, { duration: 1, x: 0, y: 0, z:0 })
-    gsap.killTweensOf(document.getElementById('scroll'))
-    gsap.to(document.getElementById("scroll"), {opacity: 0, bottom: 0.05*window.innerHeight,  duration: 0.2})
-  } 
-
-  const scrollE = document.getElementById('scroll')
-  const scrollS = getComputedStyle(scrollE)
-
-  const scrollH = scrollE.clientHeight - parseFloat(scrollS.paddingBottom)
-
-  if(percentageScroll == 100){
-    console.log((scrollH))
-    gsap.killTweensOf(document.getElementById("scroll"))
-    gsap.to(document.getElementById("scroll"), {bottom: 0.5*(window.innerHeight - scrollH), duration: 1.5,})
-    gsap.to(document.getElementById("scroll"), {opacity: 1, duration: 3})}
-});
-
-//Move Button
-var noCounter = 1
-
-function moveElement() { 
-    var element = document.getElementById("decButton");
-    var stopMovement = false;
-    gsap.killTweensOf(element)
-    if(stopMovement == false) {
-        if(element.style.marginLeft <= "0vw") {
-            gsap.to(element, {marginLeft:"60vw", duration: 1/noCounter, onComplete: function(){
-                moveElement()
-            }})
-        } else {
-            gsap.to(element, {marginLeft:"-60vw", duration: 1/noCounter, onComplete: function(){
-                moveElement()
-            }})
+    function startTyping(text,speed) {
+        let index = 0;
+    
+        function typeCharacter() {
+          if (index < text.length) {
+            mainHeadTxt.textContent += text[index];
+            index++;
+            setTimeout(typeCharacter, speed); // Adjust the speed by changing the timeout value
+          } else {
+            isButtonDisabled = false;
+          }
         }
+        typeCharacter();
+        isButtonDisabled = true;
     }
-}
+      
 
-function getRandomInt(min, max) { 
-    min = Math.ceil(min) 
-    max = Math.floor(max) 
-    return Math.floor(Math.random() * (max - min + 1)) + min
-}
-// Decline Button Clicked
-document.getElementById("decButton").addEventListener("click", function(){
-    moveElement()
-    noCounter += 1
-    document.getElementById("mainParagraph").textContent = "Sorry x" + noCounter
-});
-// Accept Button Clicked
-document.getElementById("accButton").addEventListener("click", function(){
-    if(noCounter == 1) {
-        document.getElementById("mainParagraph").textContent = "At least reject the apology once"
-    } else {
-        document.getElementById("decButton").style.visibility = "hidden"
-        document.getElementById("accButton").style.visibility = "hidden"
-        document.getElementById("mainParagraph").textContent = "Thannkkssss!" 
-    }
-});
+    //Yes Button Pressed
+    document.getElementById("Yes").addEventListener("click", function(){
+        if(isButtonDisabled == true) {} else {
+        yesDiv.style.visibility = "hidden"
+        noDiv.style.visibility = "hidden"
+        QueDiv.style.marginTop = "20%"
+        if(noCount == 0){
+            mainHeadTxt.textContent = ""
+            startTyping("Yaayyyy she accepted immediately! love youuuuuu mwah! 💙",40)
+            document.getElementById("AnimImage").src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHA2czhlZTI4YTl2djVzY3k3am4zNDgwbnhlb3N4aDhqYzRubXFvaiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/HxEdpHHGsbnWWv31Xt/giphy.webp"
+        } else if(noCount == 4) {
+            mainHeadTxt.textContent = "";
+            document.getElementById("AnimImage").src = "https://i.giphy.com/QoylkR73VNqt63MIxj.webp"
+            startTyping("Yayyyy, love yoouuuuuu. Took you long enough. Mwah! 💜",40)
+        } else {
+            mainHeadTxt.textContent = ""
+            document.getElementById("AnimImage").src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnMyZnBpaTliamQwZzNrcHRyNWUxMDd4YnFtc2oxZmZjZHc0cWI3ayZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/fvN5KrNcKKUyX7hNIA/200.webp"
+            startTyping("Yaayyyyy, I loveeee youuuuu. mwaah! 💝",40)
+            indDiv.style.transform = 'scale(0)'
+        }
+        }
+    });
+
+    //No Button Pressed
+    document.getElementById("No").addEventListener("click", function(){
+        console.log("pressed")
+      if (isButtonDisabled == true) {} else {  
+      noCount +=1
+      if(noCount == 1) {
+        mainHeadTxt.textContent = "WHAT??"
+        document.getElementById("AnimImage").src = "https://media3.giphy.com/media/WL9OQs5p9DaXKc3h3J/giphy.webp?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.webp&ct=s"
+        startTyping(" Okay fine, I'm locking the button.",70)
+        noDiv.style.backgroundColor = "#e0b1cc"
+        noDiv.style.backgroundImage = "url(https://png.pngtree.com/png-clipart/20230120/ourmid/pngtree-cartoon-lock-png-image_6564340.png)"
+        noDiv.disabled = true;
+
+        setTimeout(function() {
+            indDiv.classList.remove("hideClass")
+            indDiv.classList.add("showClass")
+        }, 2000);
+      } else if(noCount == 2) {
+            mainHeadTxt.textContent = ""
+            document.getElementById("AnimImage").src = "https://media2.giphy.com/media/u7Q3bJnID2DJ6ydItj/giphy.webp?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.webp&ct=s"
+            noDiv.classList.add("moveClass")
+            startTyping("Ha, I moved the button while you weren't looking.",50)
+      } else if(noCount == 3) {
+            mainHeadTxt.textContent = ""
+            noDiv.classList.remove("moveClass")
+            noDiv.style.position = "Fixed"
+            document.getElementById("AnimImage").src = "https://media1.giphy.com/media/uFsqCi7h6II9lpOV0s/giphy.webp?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.webp&ct=s"
+            startTyping("Pretty Please?",40)
+
+            moveRight()
+
+      } else if(noCount == 4) {
+            isStop = true
+            mainHeadTxt.textContent = ""
+            document.getElementById("noText").textContent = "Fine, Yes"
+            startTyping("WILL YOU BE MY VALENTINE??",30)
+            document.getElementById("AnimImage").src = "https://media4.giphy.com/media/fFw3CcsU8jcqlVMOiv/giphy.webp?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.webp&ct=s"
+      } else if(noCount == 5) {
+            mainHeadTxt.textContent = ""
+            yesDiv.style.visibility = "hidden"
+            noDiv.style.visibility = "hidden"
+            QueDiv.style.marginTop = "20%"
+            startTyping("Still the wrong yes BUT YAYYYYYYYYYYYY!!!! OKAY LOVE YOUUUU 💛",30) 
+            document.getElementById("AnimImage").src = "https://media1.giphy.com/media/QoylkR73VNqt63MIxj/giphy.webp?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.webp&ct=s"
+      } else {
+        mainHeadTxt.textContent = "Something has gone wrong, please refresh the page."
+      }
+      }  
+    });
+
+    //Key Pressed 
+    document.getElementById("clearbutton").addEventListener("click", function(){
+        console.log("Print")
+        indDiv.classList.add("sitionClass")
+        indDiv.style.transform = 'rotate(250deg)'
+        setTimeout(function() {
+            noDiv.style.backgroundImage = "none"
+            noDiv.disabled = false;
+            indDiv.style.transform = 'scale(0)'
+            noDiv.style.backgroundColor = "#ffcce9"
+        },1000);
+    })
+
+  });
+
