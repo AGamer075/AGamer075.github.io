@@ -1,30 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>An Apology</title>
-    <meta name="theme-color" content="#101010">
-    <meta name="description" content="Someone special">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love</title>
     <link rel="stylesheet" href="./style.css">
-    <script type="module" src="./main.js"></script>
+    <script src="./main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.js"></script>
-    </head>
-  <body>
-    <canvas id="bg"></canvas>
-    <div id="heading"><h1></h1></div>
-    <div id="scrolldad">
-      <div id="scroll">
-        <p id="mainParagraph">
-          Sorry
-        </p>
-        <button id="accButton">
-          I'll Forgive
-        </button>
-        <button id="decButton">
-          I'll Consider It
-        </button>
-      </div>
+</head>
+<body>
+    <div class="centred">
+        <div id="bg">
+            <div id="Animation" class="ele">
+                <img id="AnimImage" src="https://media.giphy.com/media/FRJlW6HLzQqCtGEpGC/giphy.gif?cid=790b7611lp6s8ee28a9vv5scy7jn3480nxeosxh8jc4nmqoj&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="">
+            </div>
+            <div id="Question" class="ele">
+                <h1 id="mainHead">Will You Be My Valentine?</h1>
+            </div>
+            <button id="Yes" class="ele"> 
+                <p>Yes</p>
+            </button>
+            <button id="No" class="ele">
+                <p id="noText" >I'll Consider It</p>
+            </button>
+        </div>
     </div>
-      <script type="module" src="./main.js"></script>
-  </body>
+    <div id="independant" class="hideClass">
+        <button id="clearbutton">
+            <img src="https://cdn-icons-png.flaticon.com/512/1071/1071278.png" alt="">
+        </button>
+    </div>
+</body>
 </html>
